@@ -1,40 +1,36 @@
-/* Global Styles with Background Image */
 body {
     margin: 0;
     padding: 0;
-    background-image: url('catbg.jpg'); /* Replace with your image path */
+    background-image: url('catbg.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    font-family: 'Poppins', sans-serif; /* Clean, modern font */
-    color: #333; /* Dark text for contrast */
+    font-family: 'Poppins', sans-serif;
+    color: #333;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
 
-/* Quiz Container with Rounded Corners and Subtle Shadow */
 .quiz-container {
-    background-color: rgba(255, 255, 255, 0.9); /* Slight transparency */
+    background-color: rgba(255, 255, 255, 0.9);
     border-radius: 16px;
     max-width: 600px;
     width: 90%;
     padding: 40px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     position: relative;
 }
 
-/* Quiz Caption with Bold, Clean Font */
 caption {
     font-size: 28px;
     font-weight: 600;
-    color: #4a90e2; /* Light blue color for caption */
+    color: #4a90e2;
     margin-bottom: 20px;
 }
 
-/* Styling the Cat Image (Loaded from CSS) */
 .cat-image {
     width: 100px;
     height: 100px;
@@ -42,25 +38,23 @@ caption {
     margin: 10px auto;
     display: block;
     object-fit: cover;
-    background-image: url('cat1.jpg'); /* Replace with your image path */
+    background-image: url('cat1.jpg');
     background-size: cover;
     background-position: center;
 }
 
-/* Animated Paw GIF */
 .cat-paw {
-    width: 80px;  /* Increased size */
-    height: 80px;  /* Increased size */
+    width: 80px;
+    height: 80px;
     position: absolute;
-    top: -40px;  /* Adjusted position */
-    right: -40px; /* Adjusted position */
-    background-image: url('catpaw.png'); /* Replace with your image path */
+    top: -40px;
+    right: -40px;
+    background-image: url('catpaw.png');
     background-size: cover;
     background-position: center;
     animation: float 2s infinite;
 }
 
-/* Keyframes for the Floating Paw Animation */
 @keyframes float {
     0%, 100% {
         transform: translateY(0);
@@ -70,21 +64,19 @@ caption {
     }
 }
 
-/* Styling the Textarea */
 textarea {
     width: 100%;
     height: 100px;
     padding: 10px;
     border-radius: 12px;
     border: 1px solid #ddd;
-    background-color: #f7f7f7; /* Light grey background */
+    background-color: #f7f7f7;
     color: #333;
     font-family: 'Courier Prime', monospace;
     resize: none;
     margin-bottom: 15px;
 }
 
-/* Input Text Field */
 input[type="text"] {
     width: 80%;
     padding: 10px;
@@ -95,7 +87,6 @@ input[type="text"] {
     margin-bottom: 15px;
 }
 
-/* Dropdown Styling */
 select {
     padding: 10px;
     border-radius: 12px;
@@ -104,9 +95,8 @@ select {
     margin: 10px 0;
 }
 
-/* Button Styles */
 input[type="button"] {
-    background-color: #ffb6c1; /* Light pink */
+    background-color: #ffb6c1;
     color: white;
     border: none;
     padding: 12px 20px;
@@ -117,11 +107,10 @@ input[type="button"] {
 }
 
 input[type="button"]:hover {
-    background-color: #ff85a2; /* Slightly darker pink */
+    background-color: #ff85a2;
     transform: scale(1.05);
 }
 
-/* Footer Links */
 small {
     color: #888;
 }

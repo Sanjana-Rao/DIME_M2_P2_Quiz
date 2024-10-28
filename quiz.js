@@ -5,26 +5,20 @@ for (let i = 1; i <= total + 1; i++) {
 }
 var solution = new Array();
 
-// Compliments for correct answers
 var compliments = [
     "Purrfect! 🐾",
     "You must be a cat whisperer! 😸",
     "Feline-tastic! Keep going! 🐈",
-    "You nailed it, just like a cat landing on its feet! 🐾",
     "You’re as sharp as a cat’s claws! 🐱",
     "Right on, meow! 🐈‍⬛"
 ];
 
-// Fun responses for incorrect answers
 var wrongAnswers = [
-    "Oops, not quite. Try again! 🙀",
-    "Almost there! Cats make mistakes too, you know. 🐾",
+    "Oops, not quite. 🙀",
     "A whisker away from the right answer! 😿",
-    "The cat's got your tongue? 🐱 Keep trying!",
-    "Not quite right, but you'll pounce on the next one! 🐾"
+    "The cat's got your tongue? 🐱",
 ];
 
-// Define the quiz questions and answers
 question[1] = "What is the average lifespan of a domestic cat?";
 choice1[1] = "5-8 years";
 choice1[2] = "10-15 years";
@@ -85,7 +79,6 @@ choice10[2] = "The cat is scared";
 choice10[3] = "The cat is friendly and confident";
 choice10[4] = "The cat is hunting prey";
 
-// Define the correct answers
 solution[1] = "b";
 solution[2] = "c";
 solution[3] = "a";
@@ -97,15 +90,14 @@ solution[8] = "c";
 solution[9] = "a";
 solution[10] = "c";
 
-var whichone = 1; // Track the current question
+var whichone = 1; 
 
-// Function to generate the current question and display it
 function generatequestions() {
     const tempmn = document.instantquiz.thequestion;
     const solutionInput = document.instantquiz.thesolution;
     const cmode = document.instantquiz.cmode.checked;
 
-    document.instantquiz.theresponse.selectedIndex = 0; // Reset response
+    document.instantquiz.theresponse.selectedIndex = 0; 
 
     if (whichone >= total + 1) {
         tempmn.value = "End of quiz";
@@ -113,35 +105,29 @@ function generatequestions() {
         return;
     }
 
-    // Display the current question and choices
     tempmn.value = whichone + ") " + question[whichone] + "\n\n" +
         "a) " + eval('choice' + whichone + '[1]') + "\n" +
         "b) " + eval('choice' + whichone + '[2]') + "\n" +
         "c) " + eval('choice' + whichone + '[3]') + "\n" +
         "d) " + eval('choice' + whichone + '[4]');
 
-    // Show the solution if cheat mode is enabled
     solutionInput.value = cmode ? solution[whichone] : '';
 }
 
-// Function to handle the user's response
-// Function to handle the user's response
 function responses() {
     const response = document.instantquiz.theresponse;
     const selected = response.options[response.selectedIndex].text;
     const correctAnswer = solution[whichone];
 
     if (selected !== correctAnswer && response.selectedIndex !== 0) {
-        const correctChoice = getChoiceLabel(correctAnswer);
         document.instantquiz.thesolution.value =
-            `${wrongAnswers[Math.floor(Math.random() * wrongAnswers.length)]}\nThe correct answer is: ${correctChoice}.`;
+            `${wrongAnswers[Math.floor(Math.random() * wrongAnswers.length)]} The correct answer is: ${correctAnswer}.`;
     } else if (response.selectedIndex !== 0) {
         document.instantquiz.thesolution.value =
             compliments[Math.floor(Math.random() * compliments.length)];
     }
 }
 
-// Helper function to map the correct answer letter to the text label
 function getChoiceLabel(answer) {
     switch (answer) {
         case "a":
@@ -156,5 +142,5 @@ function getChoiceLabel(answer) {
             return "";
     }
 }
-// Generate the first question when the page loads
+
 generatequestions();
