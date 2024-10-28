@@ -1,8 +1,11 @@
-/* Global Styles for a Soft Pastel Look */
+/* Global Styles with Background Image */
 body {
     margin: 0;
     padding: 0;
-    background-color: #fdf6e3; /* Light cream background */
+    background-image: url('catbg.jpg'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     font-family: 'Poppins', sans-serif; /* Clean, modern font */
     color: #333; /* Dark text for contrast */
     display: flex;
@@ -13,7 +16,7 @@ body {
 
 /* Quiz Container with Rounded Corners and Subtle Shadow */
 .quiz-container {
-    background-color: #ffffff; /* White background for clarity */
+    background-color: rgba(255, 255, 255, 0.9); /* Slight transparency */
     border-radius: 16px;
     max-width: 600px;
     width: 90%;
@@ -31,26 +34,33 @@ caption {
     margin-bottom: 20px;
 }
 
-/* Adding a Cat Image */
+/* Styling the Cat Image (Loaded from CSS) */
 .cat-image {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
-    margin: 0 auto 10px auto;
+    margin: 10px auto;
     display: block;
     object-fit: cover;
+    background-image: url('cat1.jpg'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
 }
 
-/* Animated Paw GIF */
+/* Animated Paw GIF (Loaded from CSS) */
 .cat-paw {
     width: 50px;
     height: 50px;
     position: absolute;
     top: -25px;
     right: -25px;
+    background-image: url('catpaw.png'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
     animation: float 2s infinite;
 }
 
+/* Keyframes for the Floating Paw Animation */
 @keyframes float {
     0%, 100% {
         transform: translateY(0);
