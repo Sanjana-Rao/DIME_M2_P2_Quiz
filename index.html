@@ -4,62 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cat Quiz</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Courier+Prime&display=swap" rel="stylesheet">
+
+    <!-- Link to External CSS -->
+    <link rel="stylesheet" href="quiz.css">
 </head>
 <body>
-    <div align="left">
-        <table border="0" cellspacing="0" cellpadding="0" width="100%">
-            <tr>
-                <td width="50%">
-                    <form method="POST" name="instantquiz">
-                        <table border="0" width="100%" cellspacing="0" cellpadding="0">
-                            <caption><strong>Cat Quiz</strong></caption>
-                            <tr>
-                                <td width="100%">
-                                    <div align="center">
-                                        <center>
-                                            <textarea rows="8" name="thequestion" cols="70" wrap="virtual" readonly></textarea>
-                                        </center>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr align="center">
-                                <td width="50%">
-                                    <div align="center">
-                                        <center>
-                                            <p><strong>Solution: </strong><input type="text" name="thesolution" size="35" readonly></p>
-                                        </center>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr align="center">
-                                <td width="100%">
-                                    <div align="center">
-                                        <center>
-                                            <p><strong>Your response:</strong>
-                                                <select name="theresponse" size="1" onChange="responses()">
-                                                    <option value="-----">----</option>
-                                                    <option value="a">a</option>
-                                                    <option value="b">b</option>
-                                                    <option value="c">c</option>
-                                                    <option value="d">d</option>
-                                                </select>
-                                                <input type="button" value="<< Back" name="B1" onClick="if (whichone > 1) { whichone--; generatequestions(); }">
-                                                <input type="button" value="Next >>" name="B2" onClick="if (whichone <= total) { whichone++; generatequestions(); }">
-                                            </p>
-                                            <p><small><a href="#" onClick="whichone=1; generatequestions(); return false">Start Over</a></small>
-                                                <input type="checkbox" name="cmode" value="ON"> <small>Cheat Mode</small>
-                                            </p>
-                                        </center>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-                    </form>
-                </td>
-            </tr>
-        </table>
+
+    <div class="quiz-container">
+        <!-- Animated Cat Paw GIF -->
+        <img src="catpaw.gif" alt="Cat Paw" class="cat-paw">
+
+        <!-- Cat Image -->
+        <img src="cat1.jpg" alt="Cat Image" class="cat-image">
+
+        <form method="POST" name="instantquiz">
+            <table border="0" width="100%" cellspacing="0" cellpadding="0">
+                <caption><strong>Cat Quiz</strong></caption>
+
+                <tr>
+                    <td class="center-content">
+                        <textarea name="thequestion" cols="69" wrap="virtual" readonly></textarea>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="center-content">
+                        <p><strong>Solution:</strong></p>
+                        <input type="text" name="thesolution" size="35" readonly>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="center-content">
+                        <p><strong>Your response:</strong></p>
+                        <select name="theresponse" size="1" onChange="responses()">
+                            <option value="-----">----</option>
+                            <option value="a">a</option>
+                            <option value="b">b</option>
+                            <option value="c">c</option>
+                            <option value="d">d</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div class="button-container">
+                            <input type="button" value="<< Back" name="B1"
+                                onClick="if (whichone > 1) { whichone--; generatequestions(); }">
+                            <input type="button" value="Next >>" name="B2"
+                                onClick="if (whichone <= total) { whichone++; generatequestions(); }">
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="center-content">
+                        <small>
+                            <a href="#" onClick="whichone = 1; generatequestions(); return false">Start Over</a>
+                            <input type="checkbox" name="cmode" value="ON">
+                            <label>Cheat Mode</label>
+                        </small>
+                    </td>
+                </tr>
+            </table>
+        </form>
     </div>
 
     <script src="quiz.js"></script>
+
 </body>
 </html>

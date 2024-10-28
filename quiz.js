@@ -1,30 +1,30 @@
-// Change 10 to the total number of questions
 var total = 10;
 var question = new Array();
-for (i = 1; i <= total + 1; i++) {
-    temp = "choice" + i + "=new Array()";
-    eval(temp);
+for (let i = 1; i <= total + 1; i++) {
+    eval("choice" + i + " = new Array()");
 }
 var solution = new Array();
 
-/* Fun phrases for correct answers */
-var compliments = new Array();
-compliments[0] = "Purrfect! 🐾";
-compliments[1] = "You must be a cat whisperer! 😸";
-compliments[2] = "Feline-tastic! Keep going! 🐈";
-compliments[3] = "You nailed it, just like a cat landing on its feet! 🐾";
-compliments[4] = "You’re as sharp as a cat’s claws! 🐱";
-compliments[5] = "Right on, meow! 🐈‍⬛";
+// Compliments for correct answers
+var compliments = [
+    "Purrfect! 🐾",
+    "You must be a cat whisperer! 😸",
+    "Feline-tastic! Keep going! 🐈",
+    "You nailed it, just like a cat landing on its feet! 🐾",
+    "You’re as sharp as a cat’s claws! 🐱",
+    "Right on, meow! 🐈‍⬛"
+];
 
-/* Fun responses for incorrect answers */
-var wrongAnswers = new Array();
-wrongAnswers[0] = "Oops, not quite. Try again! 🙀";
-wrongAnswers[1] = "Almost there! Cats make mistakes too, you know. 🐾";
-wrongAnswers[2] = "A whisker away from the right answer! 😿";
-wrongAnswers[3] = "The cat's got your tongue? 🐱 Keep trying!";
-wrongAnswers[4] = "Not quite right, but you'll pounce on the next one! 🐾";
+// Fun responses for incorrect answers
+var wrongAnswers = [
+    "Oops, not quite. Try again! 🙀",
+    "Almost there! Cats make mistakes too, you know. 🐾",
+    "A whisker away from the right answer! 😿",
+    "The cat's got your tongue? 🐱 Keep trying!",
+    "Not quite right, but you'll pounce on the next one! 🐾"
+];
 
-/* Cat Quiz Questions */
+// Define the quiz questions and answers
 question[1] = "What is the average lifespan of a domestic cat?";
 choice1[1] = "5-8 years";
 choice1[2] = "10-15 years";
@@ -85,7 +85,7 @@ choice10[2] = "The cat is scared";
 choice10[3] = "The cat is friendly and confident";
 choice10[4] = "The cat is hunting prey";
 
-/* Solutions */
+// Define the correct answers
 solution[1] = "b";
 solution[2] = "c";
 solution[3] = "a";
@@ -97,26 +97,38 @@ solution[8] = "c";
 solution[9] = "a";
 solution[10] = "c";
 
+var whichone = 1; // Track the current question
+
+// Function to generate the current question and display it
 function generatequestions() {
-    document.instantquiz.theresponse.selectedIndex = 0;
-    if (!document.instantquiz.cmode.checked || whichone >= total + 1 || whichone <= 0)
-        document.instantquiz.thesolution.value = '';
-    if (whichone >= total + 1)
+    const tempmn = document.instantquiz.thequestion;
+    const solutionInput = document.instantquiz.thesolution;
+    const cmode = document.instantquiz.cmode.checked;
+
+    document.instantquiz.theresponse.selectedIndex = 0; // Reset response
+
+    if (whichone >= total + 1) {
         tempmn.value = "End of quiz";
-    else {
-        tempmn.value = whichone + ")" + question[whichone] + "\n\n" +
-            "a)" + eval('choice' + whichone + '[1]') + "\n" +
-            "b)" + eval('choice' + whichone + '[2]') + "\n" +
-            "c)" + eval('choice' + whichone + '[3]') + "\n" +
-            "d)" + eval('choice' + whichone + '[4]');
-        if (document.instantquiz.cmode.checked)
-            document.instantquiz.thesolution.value = solution[whichone];
+        solutionInput.value = '';
+        return;
     }
+
+    // Display the current question and choices
+    tempmn.value = whichone + ") " + question[whichone] + "\n\n" +
+        "a) " + eval('choice' + whichone + '[1]') + "\n" +
+        "b) " + eval('choice' + whichone + '[2]') + "\n" +
+        "c) " + eval('choice' + whichone + '[3]') + "\n" +
+        "d) " + eval('choice' + whichone + '[4]');
+
+    // Show the solution if cheat mode is enabled
+    solutionInput.value = cmode ? solution[whichone] : '';
 }
 
+// Function to handle the user's response
 function responses() {
-    var temp2 = document.instantquiz.theresponse;
-    var temp3 = temp2.options[temp2.selectedIndex].text;
+    const temp2 = document.instantquiz.theresponse;
+    const temp3 = temp2.options[temp2.selectedIndex].text;
+
     if (temp3 != solution[whichone] && temp2.selectedIndex != 0) {
         document.instantquiz.thesolution.value = wrongAnswers[Math.floor(Math.random() * wrongAnswers.length)];
     } else if (temp2.selectedIndex != 0) {
@@ -124,4 +136,5 @@ function responses() {
     }
 }
 
+// Generate the first question when the page loads
 generatequestions();
