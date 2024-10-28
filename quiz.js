@@ -125,16 +125,36 @@ function generatequestions() {
 }
 
 // Function to handle the user's response
+// Function to handle the user's response
 function responses() {
-    const temp2 = document.instantquiz.theresponse;
-    const temp3 = temp2.options[temp2.selectedIndex].text;
+    const response = document.instantquiz.theresponse;
+    const selected = response.options[response.selectedIndex].text;
+    const correctAnswer = solution[whichone];
 
-    if (temp3 != solution[whichone] && temp2.selectedIndex != 0) {
-        document.instantquiz.thesolution.value = wrongAnswers[Math.floor(Math.random() * wrongAnswers.length)];
-    } else if (temp2.selectedIndex != 0) {
-        document.instantquiz.thesolution.value = compliments[Math.floor(Math.random() * compliments.length)];
+    if (selected !== correctAnswer && response.selectedIndex !== 0) {
+        const correctChoice = getChoiceLabel(correctAnswer);
+        document.instantquiz.thesolution.value =
+            `${wrongAnswers[Math.floor(Math.random() * wrongAnswers.length)]}\nThe correct answer is: ${correctChoice}.`;
+    } else if (response.selectedIndex !== 0) {
+        document.instantquiz.thesolution.value =
+            compliments[Math.floor(Math.random() * compliments.length)];
     }
 }
 
+// Helper function to map the correct answer letter to the text label
+function getChoiceLabel(answer) {
+    switch (answer) {
+        case "a":
+            return "a) " + eval('choice' + whichone + '[1]');
+        case "b":
+            return "b) " + eval('choice' + whichone + '[2]');
+        case "c":
+            return "c) " + eval('choice' + whichone + '[3]');
+        case "d":
+            return "d) " + eval('choice' + whichone + '[4]');
+        default:
+            return "";
+    }
+}
 // Generate the first question when the page loads
 generatequestions();
